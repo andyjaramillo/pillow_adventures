@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwllxdufyg6l5"]
+
+[ext_resource type="Texture2D" uid="uid://b6d3m1mjwwor5" path="res://icon.svg" id="1_v520y"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_wllg7"]
+[ext_resource type="PackedScene" uid="uid://dddqylwqmn7uc" path="res://player/marker/marker.tscn" id="2_y0hxq"]
+[ext_resource type="Shader" path="res://player/player.gdshader" id="3_6vsd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spmkk"]
+size = Vector2(48, 44)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vw4b5"]
+shader = ExtResource("3_6vsd1")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/range = 10.0
+shader_parameter/time = 3.0
+shader_parameter/is_on = 0
+
+[node name="Player" type="Area2D" groups=["player"]]
+collision_mask = 6
+script = ExtResource("1_wllg7")
+SPEED = 500
+lives = 3
+marker_scene = ExtResource("2_y0hxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_spmkk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vw4b5")
+scale = Vector2(0.390625, 0.359375)
+texture = ExtResource("1_v520y")
+
+[node name="PolygonTimer" type="Timer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+
+[node name="Hitstun" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="PolygonTimer" to="." method="_on_polygon_timer_timeout"]
+[connection signal="timeout" from="Hitstun" to="." method="_on_hitstun_timeout"]

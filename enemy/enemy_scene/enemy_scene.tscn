@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dloxbndfk4c4s"]
+
+[ext_resource type="Script" path="res://enemy/enemy_scene/enemy_scene.gd" id="1_174ki"]
+[ext_resource type="Texture2D" uid="uid://b6d3m1mjwwor5" path="res://icon.svg" id="2_lx1cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahlai"]
+size = Vector2(57, 57)
+
+[node name="EnemyScene" type="Area2D" groups=["enemy"]]
+collision_layer = 2
+script = ExtResource("1_174ki")
+tracking_speed = 0.01
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ahlai")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.367188, 0.398438)
+texture = ExtResource("2_lx1cr")

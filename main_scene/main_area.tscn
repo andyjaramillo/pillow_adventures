@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckl5htgsc3jc8"]
+
+[ext_resource type="Script" path="res://main_scene/main_area.gd" id="1_0bx6g"]
+[ext_resource type="PackedScene" uid="uid://cwllxdufyg6l5" path="res://player/player.tscn" id="1_yawuk"]
+[ext_resource type="Texture2D" uid="uid://d2p8r3ao2qqp0" path="res://polygon.jpg" id="2_7fqi2"]
+[ext_resource type="PackedScene" uid="uid://girx2xxqt7ws" path="res://enemy/enemy_spawn_manager/enemy_spawn_managet.tscn" id="2_uvyr2"]
+[ext_resource type="PackedScene" uid="uid://cyn72vclwn4em" path="res://tools/reload/reload.tscn" id="4_ewjbl"]
+[ext_resource type="PackedScene" uid="uid://k7g5um7uqasc" path="res://HUD/hud.tscn" id="5_pu4ue"]
+
+[node name="MainArea" type="Node2D"]
+script = ExtResource("1_0bx6g")
+polygon_texture = ExtResource("2_7fqi2")
+
+[node name="Player" parent="." instance=ExtResource("1_yawuk")]
+position = Vector2(760, 408)
+
+[node name="Reload" parent="." instance=ExtResource("4_ewjbl")]
+
+[node name="TextureRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1800.0
+offset_bottom = 1152.0
+color = Color(0.356863, 1, 1, 0.207843)
+
+[node name="Hud" parent="." instance=ExtResource("5_pu4ue")]
+
+[node name="EnemySpawnManager" parent="." instance=ExtResource("2_uvyr2")]
+
+[connection signal="delete_polygon" from="Player" to="." method="_on_player_delete_polygon"]
+[connection signal="trigger_draw" from="Player" to="." method="_on_player_trigger_draw"]
+[connection signal="trigger_hit" from="Player" to="." method="_on_player_trigger_hit"]
+[connection signal="trigger_polygon_draw" from="Player" to="." method="_on_player_trigger_polygon_draw"]

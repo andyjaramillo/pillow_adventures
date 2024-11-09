@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://k7g5um7uqasc"]
+
+[ext_resource type="Script" path="res://HUD/hud.gd" id="1_4el15"]
+[ext_resource type="Texture2D" uid="uid://cqjxfnplduugg" path="res://Egg_item.png" id="2_3itwo"]
+
+[node name="Hud" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("1_4el15")
+heart = ExtResource("2_3itwo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 204.0
+offset_bottom = 80.0

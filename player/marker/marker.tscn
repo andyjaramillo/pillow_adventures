@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dddqylwqmn7uc"]
+
+[ext_resource type="Script" path="res://player/marker/marker.gd" id="1_fj1u4"]
+[ext_resource type="Texture2D" uid="uid://gew3bq50ea2" path="res://marker.png" id="1_s7jdu"]
+[ext_resource type="Shader" path="res://player/marker/marker.gdshader" id="2_s2wcr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41ley"]
+resource_local_to_scene = true
+shader = ExtResource("2_s2wcr")
+shader_parameter/tint_color = Color(1, 0, 0, 1)
+shader_parameter/intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qm21l"]
+radius = 40.0125
+
+[node name="Marker" type="Marker2D" groups=["marker"]]
+script = ExtResource("1_fj1u4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_41ley")
+position = Vector2(-1.90735e-06, -3.8147e-06)
+scale = Vector2(0.0680147, 0.0650944)
+texture = ExtResource("1_s7jdu")
+
+[node name="Area2D" type="Area2D" parent="." groups=["marker"]]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qm21l")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
