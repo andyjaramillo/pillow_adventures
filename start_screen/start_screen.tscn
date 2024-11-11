@@ -1,27 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxa0coqfe3wm2"]
+[gd_scene load_steps=4 format=3 uid="uid://cxa0coqfe3wm2"]
 
 [ext_resource type="Script" path="res://start_screen/start_screen.gd" id="1_4soml"]
+[ext_resource type="Texture2D" uid="uid://cf0w3dqqe87ew" path="res://start_screen/pillow_adventures_titlescreen.jpg" id="2_30hvj"]
+[ext_resource type="FontFile" uid="uid://hjvndh54jvwq" path="res://fonts/Barbie Doll.otf" id="3_m3hqh"]
 
-[node name="StartScreen" type="ColorRect"]
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
 script = ExtResource("1_4soml")
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -24.0
-offset_right = 95.0
-offset_bottom = 24.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Welcome to Pillow world"
+texture = ExtResource("2_30hvj")
+expand_mode = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -30,12 +28,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -216.0
-offset_right = 56.0
-offset_bottom = -176.0
+offset_left = 320.0
+offset_top = -128.0
+offset_right = 463.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_m3hqh")
+theme_override_font_sizes/font_size = 90
 text = "Start!"
+flat = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

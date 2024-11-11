@@ -1,5 +1,9 @@
-extends Area2D
+extends CharacterBody2D
 class_name Player
+
+
+@onready var anim_player: AnimationPlayer = $Sprite2D/AnimationPlayer
+
 
 @export var SPEED : int
 @export var lives: int
@@ -25,14 +29,21 @@ func _process(delta: float) -> void:
 		var value = pulse()
 		$Sprite2D.material.set_shader_parameter("time", value)
 	
+	
+	
 	if Input.is_action_pressed("up"):
 		position.y -= SPEED * delta
-	if Input.is_action_pressed("down"):
+		anim_player.play("move_up")
+	elif Input.is_action_pressed("down"):
 		position.y += SPEED * delta
-	if Input.is_action_pressed("left"):
+		anim_player.play("move_down")
+	elif Input.is_action_pressed("left"):
 		position.x -= SPEED * delta
-	if Input.is_action_pressed("right"):
+		anim_player.play("move_left")
+	elif Input.is_action_pressed("right"):
 		position.x += SPEED * delta
+		anim_player.play("move_right")
+	
 	
 	if Input.is_action_just_pressed("mark") and $PolygonTimer.is_stopped():
 		set_point()
@@ -54,13 +65,16 @@ func set_point():
 	attack_position_vector.append(point_marker.position)
 
 	get_tree().current_scene.add_child(point_marker)
-	
+
+
 func check_grouping(prev, current, state):
 	is_overlapping = state
- 	
+ 
+
 func pulse():
 	counter += 0.005
 	return sin(2 * PI * counter) + 1
+
 
 func _on_polygon_timer_timeout() -> void:
 	delete_polygon.emit()
@@ -70,19 +84,14 @@ func _on_polygon_timer_timeout() -> void:
 	attack_position_vector.clear()
 
 
+func _on_hitstun_timeout() -> void:
+	$Hitstun.stop()
+	$Sprite2D.material.set_shader_parameter("is_on", 0)
+ 
 
-
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy") and $Hitstun.is_stopped():
 		lives -= 1
 		trigger_hit.emit(lives)
 		$Hitstun.start()
 		$Sprite2D.material.set_shader_parameter("is_on", 1)
-		
- 
-
-
-func _on_hitstun_timeout() -> void:
-	$Hitstun.stop()
-	$Sprite2D.material.set_shader_parameter("is_on", 0)
- 

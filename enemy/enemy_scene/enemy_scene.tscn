@@ -1,10 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://dloxbndfk4c4s"]
+[gd_scene load_steps=7 format=3 uid="uid://dloxbndfk4c4s"]
 
 [ext_resource type="Script" path="res://enemy/enemy_scene/enemy_scene.gd" id="1_174ki"]
-[ext_resource type="Texture2D" uid="uid://b6d3m1mjwwor5" path="res://icon.svg" id="2_lx1cr"]
+[ext_resource type="Texture2D" uid="uid://dns2v760hhpch" path="res://enemy/enemy_scene/nightmore.png" id="2_18o7x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahlai"]
-size = Vector2(57, 57)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wk8tf"]
+radius = 14.3178
+
+[sub_resource type="Animation" id="Animation_g4f0q"]
+resource_name = "move"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_2uvub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_prea6"]
+_data = {
+"RESET": SubResource("Animation_2uvub"),
+"move": SubResource("Animation_g4f0q")
+}
 
 [node name="EnemyScene" type="Area2D" groups=["enemy"]]
 collision_layer = 2
@@ -12,10 +50,15 @@ script = ExtResource("1_174ki")
 tracking_speed = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_ahlai")
+shape = SubResource("CircleShape2D_wk8tf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.8147e-06, -3.8147e-06)
-scale = Vector2(0.367188, 0.398438)
-texture = ExtResource("2_lx1cr")
+scale = Vector2(0.923, 1)
+texture = ExtResource("2_18o7x")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_prea6")
+}
