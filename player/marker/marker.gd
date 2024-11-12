@@ -12,13 +12,15 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		overlap.emit(position, area.position, true)
+
+ 
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		overlap.emit(position, body.position, true)
 		$Sprite2D.material.set_shader_parameter("intensity", 0.75)
 
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		overlap.emit(position, area.position, false)
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		overlap.emit(position, body.position, false)
 		$Sprite2D.material.set_shader_parameter("intensity", 0.0)

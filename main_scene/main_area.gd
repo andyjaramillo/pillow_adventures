@@ -9,6 +9,9 @@ var polygon_array : PackedVector2Array
 # Called when the node  enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.set_player($Player)
+	EnemyManager.set_audio($EnemyManager/AudioStreamPlayer2D)
+	$AudioStreamPlayer2D.play() 
+ 	
 	pass # Replace with function body.
 
 

@@ -3,6 +3,7 @@ extends Node2D
 @onready var anim_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 
+
 @export var tracking_speed : float
 
 
@@ -18,8 +19,10 @@ func _process(delta: float) -> void:
 	
 
 func clear_if_inside(polygon_vector: PackedVector2Array):
-	print(Geometry2D.is_point_in_polygon(global_position, polygon_vector), self.global_position)
-	if Geometry2D.is_point_in_polygon(global_position, polygon_vector):
+	var square_polygon : PackedVector2Array = [Vector2(global_position.x - 14, global_position.y -14), Vector2(global_position.x + 14, global_position.y -14), Vector2(global_position.x-14, global_position.y + 14), Vector2(global_position.x + 14, global_position.y + 14)]
+	print(Geometry2D.intersect_polygons(square_polygon, polygon_vector).size(), self.global_position)
+	if Geometry2D.intersect_polygons(square_polygon, polygon_vector).size() > 0:
+		EnemyManager.kill_dream()
 		EnemyManager.add_enemy_killed()
 		queue_free()
 	

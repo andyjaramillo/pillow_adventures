@@ -1,7 +1,7 @@
 extends Node
 
 var enemies_killed : int
-
+var audio
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,6 +11,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func set_audio(audio_scene):
+	audio = audio_scene
+
+func kill_dream():
+	print(get_children())
+	if audio.playing == false:
+		audio.play()
 
 func add_enemy_killed():
 	enemies_killed += 1

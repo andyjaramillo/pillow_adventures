@@ -12,6 +12,7 @@ var attack_position_vector : Array[Vector2]
 var previous_marker_position : Vector2 = Vector2(0,0)
 var current_marker_position : Vector2 = Vector2(0,0)
 var is_overlapping : bool = false
+var screen_size
 signal trigger_draw(prev, current)
 signal trigger_polygon_draw
 signal delete_polygon
@@ -20,6 +21,8 @@ var counter : float = 0.005
 
 # Called when the node enterMarker2D.new()s the scene tree for the first time.
 func _ready() -> void:
+	screen_size= get_viewport_rect().size
+	screen_size =  Vector2(screen_size.x - 15, screen_size.y - 35)
 	pass # Replace with function body.
 
 
@@ -44,6 +47,7 @@ func _process(delta: float) -> void:
 		position.x += SPEED * delta
 		anim_player.play("move_right")
 	
+	position = position.clamp(Vector2(15,15), screen_size)
 	
 	if Input.is_action_just_pressed("mark") and $PolygonTimer.is_stopped():
 		set_point()
@@ -90,8 +94,11 @@ func _on_hitstun_timeout() -> void:
  
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	
 	if area.is_in_group("enemy") and $Hitstun.is_stopped():
 		lives -= 1
+		$AudioStreamPlayer2D.play()
 		trigger_hit.emit(lives)
 		$Hitstun.start()
+	
 		$Sprite2D.material.set_shader_parameter("is_on", 1)
