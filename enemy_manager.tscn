@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://butdvikapdvb1"]
 
 [ext_resource type="Script" path="res://enemy_manager.gd" id="1_uhq4q"]
-[ext_resource type="AudioStream" uid="uid://cd3kfwcgaf1tq" path="res://dream-kill.mp3" id="2_w5sh6"]
+[ext_resource type="AudioStream" uid="uid://cd3kfwcgaf1tq" path="res://audio/dream-kill.mp3" id="2_w5sh6"]
 
 [node name="EnemyManager" type="Node2D"]
 script = ExtResource("1_uhq4q")

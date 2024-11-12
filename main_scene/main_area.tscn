@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://girx2xxqt7ws" path="res://enemy/enemy_spawn_manager/enemy_spawn_managet.tscn" id="2_uvyr2"]
 [ext_resource type="PackedScene" uid="uid://cyn72vclwn4em" path="res://tools/reload/reload.tscn" id="4_ewjbl"]
 [ext_resource type="PackedScene" uid="uid://k7g5um7uqasc" path="res://HUD/hud.tscn" id="5_pu4ue"]
-[ext_resource type="AudioStream" uid="uid://be02gje6py2cj" path="res://level_1.wav" id="7_4rmyy"]
+[ext_resource type="AudioStream" uid="uid://be02gje6py2cj" path="res://audio/level_1.wav" id="7_4rmyy"]
 [ext_resource type="PackedScene" uid="uid://butdvikapdvb1" path="res://enemy_manager.tscn" id="8_04r2w"]
 
 [node name="MainArea" type="Node2D"]

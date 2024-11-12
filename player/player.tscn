@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dddqylwqmn7uc" path="res://player/marker/marker.tscn" id="2_y0hxq"]
 [ext_resource type="Shader" path="res://player/player.gdshader" id="3_6vsd1"]
 [ext_resource type="Texture2D" uid="uid://ccx5gdc8ug04p" path="res://player/tomato_tom.png" id="4_4kckn"]
-[ext_resource type="AudioStream" uid="uid://cg5wm1781r4kd" path="res://discord-notification-fx_G_major.wav" id="5_pqbiu"]
+[ext_resource type="AudioStream" uid="uid://cg5wm1781r4kd" path="res://audio/discord-notification-fx_G_major.wav" id="5_pqbiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3klh1"]
 size = Vector2(28, 36)

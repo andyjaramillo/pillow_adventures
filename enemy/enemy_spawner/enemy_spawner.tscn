@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://enemy/enemy_spawner/enemy_spawner.gd" id="1_8ilp6"]
 [ext_resource type="PackedScene" uid="uid://dloxbndfk4c4s" path="res://enemy/enemy_scene/enemy_scene.tscn" id="2_0wkp4"]
 [ext_resource type="Shader" path="res://enemy/enemy_spawner/enemy_spawner.gdshader" id="3_h3dwj"]
-[ext_resource type="Texture2D" uid="uid://cd8k2vy62nyg1" path="res://star.png" id="3_hoyjs"]
+[ext_resource type="Texture2D" uid="uid://dht787r0p6o5c" path="res://enemy/enemy_spawner/night_portal.png" id="4_p7i63"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vn3fp"]
 shader = ExtResource("3_h3dwj")
@@ -21,7 +21,7 @@ autostart = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_vn3fp")
 position = Vector2(0, -1.00002)
-scale = Vector2(0.237991, 0.248768)
-texture = ExtResource("3_hoyjs")
+scale = Vector2(0.239, 0.25)
+texture = ExtResource("4_p7i63")
 
 [connection signal="timeout" from="EnemySpawner" to="." method="_on_enemy_spawner_timeout"]

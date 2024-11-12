@@ -1,24 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cggylqaq4o64o"]
+[gd_scene load_steps=5 format=3 uid="uid://cggylqaq4o64o"]
 
 [ext_resource type="Script" path="res://end_screen/end_screen.gd" id="1_vp0ns"]
+[ext_resource type="Texture2D" uid="uid://d05kkoo18xofw" path="res://end_screen/pillow_world_gameover_screen.jpg" id="2_0rwou"]
+[ext_resource type="FontFile" uid="uid://hjvndh54jvwq" path="res://fonts/Barbie Doll.otf" id="3_0auaw"]
+[ext_resource type="AudioStream" uid="uid://bc7xtcrgy22ec" path="res://audio/good-night-lofi-cozy-chill-music-160166.mp3" id="4_gmxi7"]
 
-[node name="EndScreen" type="ColorRect"]
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.0885599, 0.0885599, 0.0885599, 1)
 script = ExtResource("1_vp0ns")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_top = 112.0
-offset_right = 34.0
-offset_bottom = 135.0
-grow_horizontal = 2
-text = "You Died!	"
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_0rwou")
+expand_mode = 1
 
 [node name="EnemiesDestroyed" type="Label" parent="."]
 layout_mode = 1
@@ -27,13 +26,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.5
-offset_top = -28.0
-offset_right = 58.5
-offset_bottom = 28.0
+offset_left = 264.0
+offset_top = 28.0
+offset_right = 475.0
+offset_bottom = 149.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Enemies Killed:
+theme_override_fonts/font = ExtResource("3_0auaw")
+theme_override_font_sizes/font_size = 65
+text = "nightmores 
+caught:
 "
 
 [node name="Button" type="Button" parent="."]
@@ -43,12 +45,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -192.0
-offset_right = 33.0
-offset_bottom = -161.0
+offset_left = 256.0
+offset_top = -120.0
+offset_right = 514.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0.954458, 2.11775e-06, 9.62615e-07, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_0auaw")
+theme_override_font_sizes/font_size = 90
 text = "Try Again"
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gmxi7")
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

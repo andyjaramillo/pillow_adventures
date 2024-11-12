@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cf0w3dqqe87ew" path="res://start_screen/pillow_adventures_titlescreen.jpg" id="2_30hvj"]
 [ext_resource type="Shader" path="res://start_screen/start_screen.gdshader" id="2_hjuu7"]
 [ext_resource type="FontFile" uid="uid://hjvndh54jvwq" path="res://fonts/Barbie Doll.otf" id="3_m3hqh"]
-[ext_resource type="AudioStream" uid="uid://dqdq2ht1mrr3n" path="res://dream.mp3" id="4_4a77e"]
-[ext_resource type="AudioStream" uid="uid://bfl02iysffvh0" path="res://night-ambience-17064.mp3" id="6_riwve"]
+[ext_resource type="AudioStream" uid="uid://dqdq2ht1mrr3n" path="res://audio/dream.mp3" id="4_4a77e"]
+[ext_resource type="AudioStream" uid="uid://bfl02iysffvh0" path="res://audio/night-ambience-17064.mp3" id="6_riwve"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ljcn"]
 shader = ExtResource("2_hjuu7")
