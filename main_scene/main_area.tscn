@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckl5htgsc3jc8"]
+[gd_scene load_steps=11 format=3 uid="uid://ckl5htgsc3jc8"]
 
 [ext_resource type="Script" path="res://main_scene/main_area.gd" id="1_0bx6g"]
 [ext_resource type="PackedScene" uid="uid://cwllxdufyg6l5" path="res://player/player.tscn" id="1_yawuk"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://k7g5um7uqasc" path="res://HUD/hud.tscn" id="5_pu4ue"]
 [ext_resource type="AudioStream" uid="uid://be02gje6py2cj" path="res://audio/level_1.wav" id="7_4rmyy"]
 [ext_resource type="PackedScene" uid="uid://butdvikapdvb1" path="res://enemy_manager.tscn" id="8_04r2w"]
+[ext_resource type="PackedScene" uid="uid://bv34v8jhpnayp" path="res://effects/clouds/cloud_manager.tscn" id="10_geo27"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65i37"]
+size = Vector2(83.75, 639.75)
 
 [node name="MainArea" type="Node2D"]
 script = ExtResource("1_0bx6g")
@@ -57,6 +61,14 @@ stream = ExtResource("7_4rmyy")
 autoplay = true
 
 [node name="EnemyManager" parent="." instance=ExtResource("8_04r2w")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.880583, 0.763593, 0.818003, 1)
+
+[node name="CloudManager" parent="." instance=ExtResource("10_geo27")]
+position = Vector2(41.875, 320.125)
+shape = SubResource("RectangleShape2D_65i37")
 
 [connection signal="delete_polygon" from="Player" to="." method="_on_player_delete_polygon"]
 [connection signal="trigger_draw" from="Player" to="." method="_on_player_trigger_draw"]

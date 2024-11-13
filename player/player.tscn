@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwllxdufyg6l5"]
+[gd_scene load_steps=17 format=3 uid="uid://cwllxdufyg6l5"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_wllg7"]
 [ext_resource type="PackedScene" uid="uid://dddqylwqmn7uc" path="res://player/marker/marker.tscn" id="2_y0hxq"]
@@ -18,6 +18,9 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/range = 10.0
 shader_parameter/time = 3.0
 shader_parameter/is_on = 0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cp1dv"]
+polygon = PackedVector2Array(-11, -12, -11, -8, -9, -8, -9, -4, -10, -2, -11, 0, -13, 0, -13, 6, -11, 6, -11, 10, -11, 14, -13, 16, -13, 20, -11, 22, 11, 22, 13, 20, 13, 16, 10, 14, 8, 11, 11, 10, 11, 6, 13, 6, 13, 0, 11, -2, 9, -4, 9, -8, 11, -8, 11, -12)
 
 [sub_resource type="Animation" id="Animation_jlb65"]
 length = 0.001
@@ -161,6 +164,15 @@ material = SubResource("ShaderMaterial_vw4b5")
 scale = Vector2(2.177, 2)
 texture = ExtResource("4_4kckn")
 hframes = 10
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+visible = false
+scale = Vector2(0.459348, 0.5)
+occluder = SubResource("OccluderPolygon2D_cp1dv")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D/LightOccluder2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(-11, -12, -11, -8, -9, -8, -9, -4, -10, -2, -11, 0, -13, 0, -13, 6, -11, 6, -11, 10, -11, 14, -13, 16, -13, 20, -11, 22, 11, 22, 13, 20, 13, 16, 10, 14, 8, 11, 11, 10, 11, 6, 13, 6, 13, 0, 11, -2, 9, -4, 9, -8, 11, -8, 11, -12)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 root_node = NodePath("../..")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4jqajq0as8i"]
+
+[ext_resource type="Texture2D" uid="uid://dq4bsfs51qo8a" path="res://point_light.jpg" id="1_dk6te"]
+[ext_resource type="Script" path="res://effects/clouds/cloud.gd" id="2_t22qd"]
+
+[node name="Cloud" type="PointLight2D"]
+color = Color(0.488045, 0.573054, 0.573398, 1)
+blend_mode = 1
+shadow_enabled = true
+texture = ExtResource("1_dk6te")
+script = ExtResource("2_t22qd")
+MOVING_SPEED = 50
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.190762, 0.190762, 0.190762, 1)
