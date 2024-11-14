@@ -3,6 +3,9 @@ extends Node2D
 @export var spawner_scene : PackedScene
 @export var padding:int
 var rng = RandomNumberGenerator.new()
+
+signal _on_enemy_killed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -29,9 +32,12 @@ func generate_spawn_point():
 	var spawn_point = Vector2(spawn_X, spawn_Y)
 	return spawn_point
 
+func trigger_on_enemy_killed():
+	_on_enemy_killed.emit()
+
 func _on_timer_timeout() -> void:
 	var spawner = spawner_scene.instantiate()
-
+	spawner.get_signal().connect(trigger_on_enemy_killed)
 	var number_of_spawners : int = get_tree().get_nodes_in_group("spawner").size() - 1
 	var spawn_point = generate_spawn_point()
 	while number_of_spawners > 0:

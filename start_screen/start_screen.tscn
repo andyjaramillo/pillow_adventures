@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxa0coqfe3wm2"]
+[gd_scene load_steps=9 format=3 uid="uid://cxa0coqfe3wm2"]
 
 [ext_resource type="Script" path="res://start_screen/start_screen.gd" id="1_4soml"]
 [ext_resource type="Texture2D" uid="uid://cf0w3dqqe87ew" path="res://start_screen/pillow_adventures_titlescreen.jpg" id="2_30hvj"]
@@ -13,6 +13,8 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/range = 10.0
 shader_parameter/time = 0.05
 shader_parameter/is_on = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ntbv"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -32,24 +34,46 @@ grow_vertical = 2
 texture = ExtResource("2_30hvj")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 320.0
-offset_top = -128.0
-offset_right = 463.0
-offset_bottom = -52.0
+offset_left = 304.0
+offset_top = -160.0
+offset_right = 474.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_m3hqh")
 theme_override_font_sizes/font_size = 90
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0ntbv")
 text = "Start!"
+flat = true
+
+[node name="OptionsButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 288.0
+offset_top = -88.0
+offset_right = 488.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_m3hqh")
+theme_override_font_sizes/font_size = 90
+text = "options"
 flat = true
 
 [node name="StartupSound" type="AudioStreamPlayer2D" parent="."]
@@ -58,4 +82,5 @@ stream = ExtResource("4_4a77e")
 [node name="Background" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_riwve")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

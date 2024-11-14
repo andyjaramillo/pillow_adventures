@@ -21,6 +21,10 @@ func kill_dream():
 
 func add_enemy_killed():
 	enemies_killed += 1
+	
+	
+func add_enemy_callable():
+	return Callable(self, "add_enemy_killed")
 
 func get_enemies_killed():
 	return enemies_killed

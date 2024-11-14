@@ -78,6 +78,7 @@ func _on_player_trigger_polygon_draw() -> void:
 	polygon_array = line_tuple_array_to_vector2_array(lines)
 	draw_polygon_ = true
 	queue_redraw()
+	
 	pass # Replace with function body.
  
 
@@ -92,4 +93,9 @@ func _on_player_trigger_hit(lives_remaining: Variant) -> void:
 	$Hud.delete_hearts(lives_remaining)
 	if lives_remaining == 0:
 		SceneManager.switch_scene("EndScreen")
+	pass # Replace with function body.
+
+
+func _on_enemy_spawn_manager__on_enemy_killed() -> void:
+	$Hud.update_enemy_killed(EnemyManager.get_enemies_killed())
 	pass # Replace with function body.

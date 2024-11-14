@@ -9,6 +9,8 @@ func _ready() -> void:
 	 
 	pass # Replace with function body.
 
+func update_enemy_killed(killed):
+	$Label.text = str(killed) + "Killed"
 
 
 func delete_hearts(hearts_remaining):

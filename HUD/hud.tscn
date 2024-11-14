@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://k7g5um7uqasc"]
+[gd_scene load_steps=4 format=3 uid="uid://k7g5um7uqasc"]
 
 [ext_resource type="Script" path="res://HUD/hud.gd" id="1_4el15"]
 [ext_resource type="Texture2D" uid="uid://cli8c32q454v6" path="res://HUD/spool_life_icon.png" id="2_sk0fk"]
+[ext_resource type="FontFile" uid="uid://hjvndh54jvwq" path="res://fonts/Barbie Doll.otf" id="3_efq2r"]
 
 [node name="Hud" type="CanvasLayer"]
 layer = 3
@@ -15,3 +16,16 @@ offset_right = 512.0
 offset_bottom = 512.0
 fit_content = true
 scroll_active = false
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 4.0
+anchor_right = 4.0
+offset_left = -672.0
+offset_top = 128.0
+offset_right = -33.0
+offset_bottom = 407.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_efq2r")
+theme_override_font_sizes/font_size = 310
+text = "0 Kills"

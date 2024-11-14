@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://caftssvhx75j8"]
+[gd_scene load_steps=7 format=3 uid="uid://caftssvhx75j8"]
 
 [ext_resource type="Script" path="res://enemy/enemy_spawner/enemy_spawner.gd" id="1_8ilp6"]
 [ext_resource type="PackedScene" uid="uid://dloxbndfk4c4s" path="res://enemy/enemy_scene/enemy_scene.tscn" id="2_0wkp4"]
@@ -8,6 +8,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vn3fp"]
 shader = ExtResource("3_h3dwj")
 shader_parameter/active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxmdr"]
+size = Vector2(50, 40)
 
 [node name="EnemySpawner" type="Node2D" groups=["spawner"]]
 script = ExtResource("1_8ilp6")
@@ -24,4 +27,16 @@ position = Vector2(0, -1.00002)
 scale = Vector2(0.239, 0.25)
 texture = ExtResource("4_p7i63")
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_fxmdr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_fxmdr")
+
 [connection signal="timeout" from="EnemySpawner" to="." method="_on_enemy_spawner_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

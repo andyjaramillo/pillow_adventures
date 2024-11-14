@@ -21,9 +21,13 @@ func pulse():
 
 func _on_button_pressed() -> void:
 	$StartupSound.play()
-	
 	$TextureRect.material.set_shader_parameter("is_on", 1)
+ 
+	create_tween().tween_property($StartButton, "modulate", Color.TRANSPARENT, 2)
 	is_valid = true
 	await $StartupSound.finished
 	SceneManager.switch_scene("MainScene")
+	pass # Replace with function body.
+	
+func _on_options_button_pressed() -> void:
 	pass # Replace with function body.
